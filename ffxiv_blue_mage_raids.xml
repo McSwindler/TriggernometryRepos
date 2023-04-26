@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder FFXIVJobFilterEnabled="True" FFXIVJobFilter="34359738368" Id="1f876c80-e6fb-4aa7-bbfd-648b44296174" Name="Blue Mage" Enabled="true">
+    <Folders>
+      <Folder Id="7aa5b35d-a884-4afa-ab32-0b29d84e56e4" Name="Condensed Libra" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="1A:.*gains the effect of Umbral Attenuation" Id="90e4ac2b-a312-4752-a8c2-232844637b4b" RegularExpression="1A:.*gains the effect of Umbral Attenuation">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Umbral" ActionType="UseTTS" />
+            </Actions>
+          </Trigger>
+          <Trigger Enabled="true" Name="1A:.*gains the effect of Astral Attenuation" Id="984dfbdf-da0e-4d4d-8367-073f973d695a" RegularExpression="1A:.*gains the effect of Astral Attenuation">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Astral" ActionType="UseTTS" />
+            </Actions>
+          </Trigger>
+          <Trigger Enabled="true" Name="1A:.*gains the effect of Physical Attenuation" Id="9fdc98f1-8e33-4bc4-b87a-b8fc027cdd2f" RegularExpression="1A:.*gains the effect of Physical Attenuation">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Physical" ActionType="UseTTS" />
+            </Actions>
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder FFXIVZoneFilterEnabled="True" FfxivZoneFilterRegularExpression="^245$" Id="ac535662-c1ca-460f-9cb6-5d4a69f84b53" Name="(T5) The Binding Coil of Bahamut - Turn 5" Enabled="true">
+        <Folders />
+        <Triggers />
+      </Folder>
+      <Folder FFXIVZoneFilterEnabled="True" FfxivZoneFilterRegularExpression="^358$" Id="14a5c5a5-dbf6-4ce7-84e1-b2d626cf3e4d" Name="(T9) The Second Coil of Bahamut - Turn 4" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="Death Adds" Id="cd9f744c-96fe-4668-a780-ac195fa41de9" RegularExpression="AddCombatant [0-9]{2}:[A-Z0-9]+:The Ghost of Meracydia">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Death Add" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Meteor Streams" Id="dcecdc17-8faf-49bb-b45b-956d790a2fbe" RegularExpression="TargetIcon 1B(?:\:[\w\s]*){4}:0008">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Diamondback" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder FFXIVZoneFilterEnabled="True" FfxivZoneFilterRegularExpression="^196$" Id="c1adea7b-98c0-4d42-986b-effa4f178880" Name="(T13) The Final Coil of Bahamut - Turn 4" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="Teraflare" Id="4da83cd8-b437-40fb-8108-94af2af5d8ea" RegularExpression="StartsCasting [0-9]{2}:[A-Z0-9]+:Bahamut Prime:BC1:Teraflare">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Diamondback" ActionType="UseTTS" ExecutionDelayExpression="15000">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="Gigaflare Complete" Id="3febcf91-bf33-49b9-9aee-9d3ceef00e7f" RegularExpression="ActionEffect [0-9]{2}:[A-Z0-9]+:Bahamut Prime:BB9:Gigaflare" DebugLevel="Verbose">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Mighty Guard Off" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${var:gigaflare_count}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+            </Condition>
+          </Trigger>
+          <Trigger Enabled="true" Name="Megaflare Dive" Id="2940107d-7b9d-445f-9a61-790814463f64" RegularExpression="Bahamut Prime readies Megaflare Dive">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Diamondback" ActionType="UseTTS" ExecutionDelayExpression="2000">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="Gigaflare" Id="abafa46e-3c4e-4921-8053-8d46f4ea3d1d" RegularExpression="Bahamut Prime readies Gigaflare" DebugLevel="Verbose">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Mighty Guard" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" MessageBoxIconType="Information" MessageBoxText="${_ffxiventity[Bahamut Prime].currenthp} / ${_ffxiventity[Bahamut Prime].maxhp}" VariableOp="SetNumeric" VariableName="gigaflare_count" VariableExpression="${var:gigaflare_count}+1" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="Reset Gigaflare Count" Id="6eff23ee-c31b-4661-bf9e-fb4132e549de" RegularExpression="AddCombatant [0-9]{2}:[A-Z0-9]+:Bahamut Prime(?:\:[0-9]*){7}:1116816" DebugLevel="Verbose">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="gigaflare_count" VariableExpression="0" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Megaflare Phase 2" Id="a3d75a12-7fd2-4d6f-9387-41ab33a4b4b4" RegularExpression="Bahamut Prime readies Megaflare\.&#xA;">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Diamondback" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${var:gigaflare_count}" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+            </Condition>
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Death Adds" Id="f3ddb1ce-b3e1-42dd-b981-04a876a541e6" RegularExpression="AddCombatant [0-9]{2}:[A-Z0-9]+:The Storm of Meracydia">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Death Add" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder FFXIVZoneFilterEnabled="True" FfxivZoneFilterRegularExpression="^452$" Id="f1992f34-019a-439c-abfd-601647fabf36" Name="(A4S) The Burden of the Father" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="Mortal Revolution" Id="e59b073a-dd80-48e2-af1b-6808a6c662fe" RegularExpression="The Manipulator readies Mortal Revolution\.">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Cold Fog" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder FFXIVZoneFilterEnabled="True" FfxivZoneFilterRegularExpression="^532$" Id="a0bfe457-a60c-47cf-bd35-45a49e09e6f5" Name="(A8S) The Burden of the Son" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="Diamondback Orbs" Id="0aae5464-2281-483e-b06c-1b5bc5b78e1d" RegularExpression="AddCombatant 03:[A-Z0-9]+:Power Plasma Beta" PrevActionsRefire="Deny">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Diamondback" ActionType="UseTTS" ExecutionDelayExpression="14000">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Intermission" Id="374ac423-54f0-4108-b6e0-b07ca1adb29b" RegularExpression="StartsCasting 14:[A-Z0-9]+:Brute Justice:1636:unknown_1636">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Mighty Guard" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" UseTTSTextExpression="Diamondback" ActionType="UseTTS" ExecutionDelayExpression="14000">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Enumeration" Id="f752022b-4c1c-42e4-8a8d-61f75f3c019f" RegularExpression="TargetIcon 1B:[\w\s]+:${_ffxivplayer}(?:\:[\w\s]*){2}:0042">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Swift Diamondback" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Super Cyclone" Id="ce043ac5-c6fb-4c82-b5ac-5f6c1299975f" RegularExpression="Vortexer readies Super Cyclone\.">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Cod Fog" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Intermission End" Id="67c00dca-7d43-4f00-811c-087e99eeb48a" RegularExpression="Vortexer uses Ultra Flash\.">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="Mighty Guard Off" ActionType="UseTTS">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder FFXIVZoneFilterEnabled="True" FfxivZoneFilterRegularExpression="^587$" Id="0d58db76-f553-4419-9c5f-a77617423159" Name="(A12S) The Soul of the Creator" Enabled="true">
+        <Folders />
+        <Triggers />
+      </Folder>
+    </Folders>
+    <Triggers>
+      <Trigger Enabled="true" Name="Death Missed" Id="1b7d8975-ece0-4911-8b3f-d7a5e5b835e0" RegularExpression="ActionEffect (?:15|16)(?:\:[\w\s]*){2}:(?:4788)(?:\:[\w\s]*){3}:1:">
+        <Actions>
+          <Action OrderNumber="1" UseTTSTextExpression="Death: Miss" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+        <Conditions />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
